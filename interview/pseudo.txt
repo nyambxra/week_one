@@ -1,0 +1,17 @@
+function minOperations(n):
+    if n <= 1:
+        return 0
+
+    create an array dp of size (n+1) and initialize all elements to infinity
+
+    set dp[1] = 0 # Base case: 0 operations needed for 1 character 
+
+    for i from 2 to n:   # function iterates from 2 to n...
+        if n is divisible by i:   #... checking if n is divisible by i
+            for j from 1 to i // 2: # if i is a factor of n, this iterates through possible factors(j) to calculate the min ops needed to reach i
+                dp[i] = minimum(dp[i], dp[j] + dp[i // j] + 2)
+
+            if dp[n] is not infinity:
+                return dp[n]
+            else:
+                return 0    
